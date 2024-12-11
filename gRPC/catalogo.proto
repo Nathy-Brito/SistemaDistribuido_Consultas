@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+service CatlogoService {
+    rpc Consultlar_por_nome (Consulta_nome_request) returns (Produto_response);
+    rpc Consultar_por_preco_inferior (Consulta_preco_request) returns (Lista_produtos_response);
+    rpc Atualizar_estoque (Atualizar_estoque_request) returns (Atualizar_estoque_response);
+}
+
+message Consulta_nome_request{
+    string nome = 1;
+}
+
+message Consulta_preco_request {
+    float valor = 1;
+}
+
+message Atualizar_estoque_request {
+    string nome = 1;
+    int32 quantidade = 2;
+}
+
+message Produto {
+    string nome = 1;
+    float preco = 2;
+    int32 quantidade = 3;
+}
+
+message Produto_response {
+    Produto produto = 1;
+}
+
+message Lista_produtos_response {
+    repeated Produto produtos = 1;
+}
+
+message Atualizar_estoque_response {
+    string mensagem = 1;
+}
